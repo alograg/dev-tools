@@ -11,6 +11,7 @@ if [ "$previous_tag" != 0 ];then
 fi
 previous_tag=${current_tag}
 done
-# git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%s" | grep -i -E "^(\[INTERNAL\]|\[FEATURE\]|\[FIX\]|\[DOC\])*\[FEATURE\]"
-#git log `git describe --tags --abbrev=0`..HEAD --pretty=format:"  * %s"
+#git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"%s" | grep -i -E "^(\[INTERNAL\]|\[FEATURE\]|\[FIX\]|\[DOC\])*\[FEATURE\]"
+git log `git describe --tags --abbrev=0`..HEAD --pretty=format:"  * %s"
 #git log --all --format="%aN <%aE>" | sort -u
+git log --all --format="%aE" | sort -u
