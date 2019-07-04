@@ -1,0 +1,27 @@
+{
+  "name": "alograg/dev-tools",
+  "description": "Dev tools for Lumen/Laravel projects",
+  "type": "library",
+  "require": {
+    "php": ">=7.2.0",
+    "laravel/lumen-framework": "5.8.*"
+  },
+  "require-dev": {
+    "appzcoder/lumen-routes-list": "^1.0",
+    "barryvdh/laravel-ide-helper": "^2.6",
+    "laravel/tinker": "^1.0"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alograg",
+      "email": "henry@alograg.me"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Alograg\\DevTools\\": "src"
+    }
+  },
+  "minimum-stability": "dev"
+}
