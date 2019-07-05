@@ -60,7 +60,7 @@ if [ "$previous_tag" != 0 ];then
     fi
     printf "\n\n"
 else
-    printf "## [Unreleased]\n\n"
+    printf "## Unreleased\n\n"
     git log ${current_tag}...HEAD --pretty=format:'*  %s [View](./commits/%H)' --reverse | grep -v Merge
     printf "\n"
 fi

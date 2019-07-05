@@ -1,10 +1,16 @@
 # CHANGELOG\n\n
-[Version: v0.0.3]\n\n
+[Version: v0.0.4]\n\n
 ## [Unreleased]
 
-*  feat(core): Base for cgenerate changelog et authors [View](./commits/617db59049c609e34354570f25b3aac7f1d04ceb)
+*  fix(core): Update version test sur readme [View](./commits/a9d1e2f08581ec640754d064b3a3aaeb4567baee)
+
+## v0.0.3 (2019-07-05)
+
+### Features:
+
+*  feat(core): Base for cgenerate changelog et authors [View](./commits/617db59049c609e34354570f25b3aac7f1d04ceb)### Documentation:
+
 *  docs(core): Badgets [View](./commits/419e990b750d2df1406c9b0dd3cc6f01b0aceb68)
-*  doc(build): Script for generate changelog and contributors [View](./commits/04619e48f8a47523493a3e8ce610e1f212079669)
 
 ## v0.0.2 (2019-07-04)
 
