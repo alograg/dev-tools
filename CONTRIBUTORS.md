@@ -1,5 +1,7 @@
-# CONTRIBUTORS\n\n
-[Version: v0.0.4]\n\n
+# CONTRIBUTORS
+
+[Version: v0.0.4]
+
+- alograg <alograg@gmail.com>
 - Alograg <alograg@gmail.com>
 - Henry <alograg@users.noreply.github.com>
-- alograg <alograg@gmail.com>

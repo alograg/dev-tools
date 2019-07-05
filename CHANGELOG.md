@@ -1,8 +1,11 @@
-# CHANGELOG\n\n
-[Version: v0.0.4]\n\n
-## [Unreleased]
+# CHANGELOG
+
+[Version: v0.0.4]
+
+## Unreleased
 
 *  fix(core): Update version test sur readme [View](./commits/a9d1e2f08581ec640754d064b3a3aaeb4567baee)
+*  fix(build): Update version test sur readme [View](./commits/90114b30793341c668dfc07644f343218ee83ca9)
 
 ## v0.0.3 (2019-07-05)
 
