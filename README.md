@@ -1,8 +1,12 @@
-# Alograg DevTools [Version: v0.0.1]
+# Alograg DevTools
 
-[![Latest Stable Version](https://poser.pugx.org/alograg/dev-tools/v/stable.svg)](https://packagist.org/packages/alograg/dev-tools)
-[![Total Downloads](https://poser.pugx.org/alograg/dev-tools/downloads.svg)](https://packagist.org/packages/alograg/dev-tools)
-[![License](https://poser.pugx.org/alograg/dev-tools/license.svg)](https://packagist.org/packages/alograg/dev-tools)
+[Version: v0.0.1]
+
+[![license](https://img.shields.io/github/license/alograg/dev-tools.svg)](https://github.com/alograg/dev-tools/blob/master/LICENSE)
+
+[![Version](http://img.shields.io/packagist/v/alograg/dev-tools.svg)](https://packagist.org/packages/alograg/dev-tools)
+
+[![Downloads](http://img.shields.io/packagist/dm/alograg/dev-tools.svg)](https://packagist.org/packages/alograg/dev-tools)
 
 Dev tools for Lumen/Laravel projects
 
