@@ -1,8 +1,14 @@
 # CHANGELOG
 
-[Version: v0.1.2]
+[Version: v0.1.3]
 
 ## Unreleased
+
+*  fix(core): COmposer typo [View](./commits/81b6e0706294fda48c202994ff9788d6de9ca8e8)
+
+## v0.1.2 (2019-07-07)
+
+### Build system or external dependencies:
 
 *  build(core): Change requirements [View](./commits/1ee33ba73177b3fbf428c14b5cc06e3b73662fa8)
 
