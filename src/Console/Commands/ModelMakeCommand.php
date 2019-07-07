@@ -2,6 +2,7 @@
 namespace Alograg\DevTools\Console\Commands;
 
 use Alograg\DevTools\Abstracts\Maker;
+use Alograg\DevTools\Traits\MakerTrait;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -10,6 +11,7 @@ use Symfony\Component\Console\Input\InputOption;
  */
 class ModelMakeCommand extends Maker
 {
+    use MakerTrait;
     /**
      * The console command name.
      *
