@@ -1,8 +1,15 @@
 # CHANGELOG
 
-[Version: v0.1.3]
+[Version: v0.1.4]
 
 ## Unreleased
+
+*  build(core): Rebase [View](./commits/ec40911a7e3d06d7269204415540829f3255e8f7)
+*  feat(core): Key generator [View](./commits/b63171da3599f0e25aa3f1ae2ff5097f55d009fc)
+
+## v0.1.3 (2019-07-07)
+
+### Fixes:
 
 *  fix(core): COmposer typo [View](./commits/81b6e0706294fda48c202994ff9788d6de9ca8e8)
 

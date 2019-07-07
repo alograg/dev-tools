@@ -1,6 +1,6 @@
 # CONTRIBUTORS
 
-[Version: v0.1.3]
+[Version: v0.1.4]
 
 - alograg <alograg@gmail.com>
 - Alograg <alograg@gmail.com>
