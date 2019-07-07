@@ -18,6 +18,7 @@ composer require --desv alograg/dev-tools
 ## Artisan Tools
 
 - [key:generate](#key:generate)
+- [make:model](#make:model)
 
 ### key:generate
 
@@ -31,4 +32,20 @@ Usage:
 Options:
       --key[=KEY]       Key to modify files [default: "APP_KEY"]
   -s, --show            Display the key instead of modifying files
+```
+
+### make:model
+
+```
+Description:
+  Create a new Eloquent model class
+
+Usage:
+  make:model [options] [--] <name>
+
+Arguments:
+  name                       The name of the class
+
+Options:
+  -t, --template[=TEMPLATE]  Relative path to stub file. DEFAULT: /home/alograg/proyectos/libraries/dev-tools/src/stubs/model.stub
 ```

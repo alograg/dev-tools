@@ -1,0 +1,31 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Database\Eloquent\Model;
+
+class DummyClass extends Model
+{
+    /** @var string $connection */
+    //protected $connection = '';
+
+    /** @var string $table */
+    //protected $table = '';
+
+    /** @var string $primaryKey */
+    //protected $primaryKey = '';
+
+    /** @var bool $incrementing */
+    //public $incrementing = false;
+
+    /** @var string $keyType */
+    //protected $keyType = 'string';
+
+    /** @var bool $timestamps */
+    public $timestamps = true;
+
+    /** @var string $dateFormat */
+    //protected $dateFormat = 'U';
+
+    // TODO: Define other default value and relations fro model DummyClass
+}

@@ -24,6 +24,7 @@ class ServiceProvider extends IlluminateServiceProvider
      */
     protected $devCommands = [
         'KeyGenerate' => 'command.key.generate',
+        'ModelMake'   => 'command.make.model',
     ];
 
     /**
@@ -68,7 +69,7 @@ class ServiceProvider extends IlluminateServiceProvider
             $className = 'Alograg\\DevTools\\Console\\' . $command . 'Command';
             if (class_exists($className)) {
                 $this->app->singleton($container, function ($app) use ($className) {
-                    return new $className();
+                    return new $className($app['files']);
                 });
             }
         }
