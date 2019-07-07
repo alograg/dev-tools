@@ -4,6 +4,7 @@
 
 Dev tools for Lumen/Laravel projects
 
-## Lumen
-
-Add Laravel frammework 
+Based on:
+- [Atnic/lumen-generator](https://github.com/Atnic/lumen-generator)
+- [webNeat/lumen-generators](https://github.com/webNeat/lumen-generators)
+- [flipbox/lumen-generator](https://github.com/flipboxstudio/lumen-generator)
