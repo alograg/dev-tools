@@ -1,11 +1,18 @@
 # CHANGELOG
 
-[Version: v0.1.4]
+[Version: v0.1.5]
 
 ## Unreleased
 
+*  feat(core): Key generator tested [View](./commits/82773f387cdbff4fb803c262032782a7536e40b6)
+
+## v0.1.4 (2019-07-07)
+
+### Features:
+
+*  feat(core): Key generator [View](./commits/b63171da3599f0e25aa3f1ae2ff5097f55d009fc)### Build system or external dependencies:
+
 *  build(core): Rebase [View](./commits/ec40911a7e3d06d7269204415540829f3255e8f7)
-*  feat(core): Key generator [View](./commits/b63171da3599f0e25aa3f1ae2ff5097f55d009fc)
 
 ## v0.1.3 (2019-07-07)
 
