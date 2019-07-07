@@ -33,6 +33,7 @@ TXT;
      * @var string
      */
     protected $type = 'Controller';
+
     /**
      * @var array
      */

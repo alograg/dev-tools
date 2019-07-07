@@ -1,15 +1,15 @@
 <?php
-
 namespace Alograg\DevTools\Console\Commands;
 
-use Illuminate\Console\GeneratorCommand;
+use Alograg\DevTools\Abstracts\Maker;
 use Illuminate\Filesystem\Filesystem;
 use Laravel\Lumen\Application;
+use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Filter Make Command
  */
-class FilterMakeCommand extends GeneratorCommand
+class FilterMakeCommand extends Maker
 {
     /**
      * The console command name.
@@ -30,7 +30,9 @@ class FilterMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $description = 'Create a new filter class';
+    protected $description = <<<TXT
+Create a new filter class
+TXT;
 
     /**
      * The type of class being generated.
@@ -39,23 +41,29 @@ class FilterMakeCommand extends GeneratorCommand
      */
     protected $type = 'Filter';
 
+    /**
+     * @var array
+     */
+    protected $options = [
+        'base',
+    ];
+
     public function __construct(Filesystem $files, Application $app)
     {
         parent::__construct($files);
-
         $this->app = $app;
     }
 
     /**
-     * Get the stub file for the generator.
+     * Get the console command options.
      *
-     * @param string|null $name
-     * @return string
+     * @return array
      */
-    protected function getStub($name = null)
+    protected function getOptions()
     {
-        if ($name == $this->qualifyClass('BaseFilter')) return __DIR__.'/stubs/filter.base.stub';
-        return __DIR__.'/stubs/filter.stub';
+        return array_merge(parent::getOptions(), [
+            ['base', null, InputOption::VALUE_NONE, 'From base filter'],
+        ]);
     }
 
     /**
@@ -68,14 +76,11 @@ class FilterMakeCommand extends GeneratorCommand
     {
         if (!$this->alreadyExists('BaseFilter')) {
             $name = $this->qualifyClass('BaseFilter');
-
             $path = $this->getPath($name);
-
             // Next, we will generate the path to the location where this class' file should get
             // written. Then, we will build the class and make the proper replacements on the
             // stub files so that it gets the correctly formatted namespace and class name.
             $this->makeDirectory($path);
-
             $this->files->put($path, $this->buildClass($name));
         }
 
@@ -85,7 +90,8 @@ class FilterMakeCommand extends GeneratorCommand
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param string $rootNamespace
+     *
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
@@ -96,27 +102,31 @@ class FilterMakeCommand extends GeneratorCommand
     /**
      * Get the destination class path.
      *
-     * @param  string  $name
+     * @param string $name
+     *
      * @return string
      */
     protected function getPath($name)
     {
-        if ($this->app['config']->get('filters.path'))
+        if ($this->app['config']->get('filters.path')) {
             return $this->app['config']->get('filters.path') . '/' . class_basename($name) . '.php';
-        else return parent::getPath($name);
+        } else {
+            return parent::getPath($name);
+        }
     }
 
     /**
      * Build the class with the given name.
      *
-     * @param  string  $name
+     * @param string $name
+     *
      * @return string
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     protected function buildClass($name)
     {
         if ($name == $this->qualifyClass('BaseFilter')) {
-            $stub = $this->files->get($this->getStub($name));
+            $stub = $this->files->get($this->getStub());
 
             return $this->replaceNamespace($stub, $name)->replaceClass($stub, $name);
         }
