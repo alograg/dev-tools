@@ -1,18 +1,26 @@
 # CHANGELOG
 
-[Version: v0.1.0]
+[Version: v0.1.1]
 
 ## Unreleased
 
-*  docs(readme): Update reademe link [View](./commits/ed72c461ecd83a2d1cba4bedd3b76cb2fff18558)
-*  perf(core): Optimization de Service provider [View](./commits/770596588e1d7a261314041ec6b3c3fe6525f0c8)
+
+## v0.1.0 (2019-07-07)
+
+### Features:
+
 *  feat(core): Abstraction of maker [View](./commits/75e43227b70a0b8afb8f4d5c84216cb18862420c)
 *  feat(core): Add translation maker [View](./commits/658730f3dd0ddf9e79e55c80b0fc9282a7ac2732)
 *  feat(core): Add maker trait [View](./commits/42064cd08fb354e1bf194d39b5a97e5276019dcd)
 *  feat(core): Review filter [View](./commits/7e0cddc8bd690c5dd7ac331766b258e882c7a55a)
 *  feat(core): Review model [View](./commits/ca45f742da511026ba0b8d56c16ea936656b95a3)
 *  feat(core): Review policy [View](./commits/8cde7aa40e925799071ec1a917fe908dcd44e5ba)
-*  feat(core): Review test [View](./commits/d8e780fb97fa22104f6a3ebcf8abe0d8110c3d8c)
+*  feat(core): Review test [View](./commits/d8e780fb97fa22104f6a3ebcf8abe0d8110c3d8c)### Improves performance:
+
+*  perf(core): Optimization de Service provider [View](./commits/770596588e1d7a261314041ec6b3c3fe6525f0c8)### Documentation:
+
+*  docs(readme): Update reademe link [View](./commits/ed72c461ecd83a2d1cba4bedd3b76cb2fff18558)### Build system or external dependencies:
+
 *  build(core): Clean for start [View](./commits/aa47013eb886f40a9fbdaa13ebb450883390950a)
 *  build(core): Change logic for add Laravel Generators [View](./commits/be2c4462790c79fbe05a68bcbdcedb8274d870ac)
 
