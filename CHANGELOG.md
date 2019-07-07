@@ -1,8 +1,24 @@
 # CHANGELOG
 
-[Version: v0.0.4]
+[Version: v0.1.0]
 
 ## Unreleased
+
+*  docs(readme): Update reademe link [View](./commits/ed72c461ecd83a2d1cba4bedd3b76cb2fff18558)
+*  perf(core): Optimization de Service provider [View](./commits/770596588e1d7a261314041ec6b3c3fe6525f0c8)
+*  feat(core): Abstraction of maker [View](./commits/75e43227b70a0b8afb8f4d5c84216cb18862420c)
+*  feat(core): Add translation maker [View](./commits/658730f3dd0ddf9e79e55c80b0fc9282a7ac2732)
+*  feat(core): Add maker trait [View](./commits/42064cd08fb354e1bf194d39b5a97e5276019dcd)
+*  feat(core): Review filter [View](./commits/7e0cddc8bd690c5dd7ac331766b258e882c7a55a)
+*  feat(core): Review model [View](./commits/ca45f742da511026ba0b8d56c16ea936656b95a3)
+*  feat(core): Review policy [View](./commits/8cde7aa40e925799071ec1a917fe908dcd44e5ba)
+*  feat(core): Review test [View](./commits/d8e780fb97fa22104f6a3ebcf8abe0d8110c3d8c)
+*  build(core): Clean for start [View](./commits/aa47013eb886f40a9fbdaa13ebb450883390950a)
+*  build(core): Change logic for add Laravel Generators [View](./commits/be2c4462790c79fbe05a68bcbdcedb8274d870ac)
+
+## v0.0.4 (2019-07-05)
+
+### Fixes:
 
 *  fix(core): Update version test sur readme [View](./commits/a9d1e2f08581ec640754d064b3a3aaeb4567baee)
 *  fix(build): Update version test sur readme [View](./commits/90114b30793341c668dfc07644f343218ee83ca9)
@@ -20,14 +36,4 @@
 ### Features:
 
 *  feat(core): Changer loger base [View](./commits/23072c95863ec5e2187f484ac18a203772765157)
-
-## v0.0.1 (2019-07-04)
-
-### Build system or external dependencies:
-
-*  build(core): Base [View](./commits/c4bb326fbcbb3b40bd325d82b25532b30353d712)
-*  build(core): Git ignore [View](./commits/78d807df26816a25a242502a0e7cafeaeb55682d)
-*  build(core): Git ignore [View](./commits/09d57c300129b3961a59feb5342782b8cae0b206)
-*  build(core): Composer update [View](./commits/88b490608f19af7990de2d15d082479e08f93f77)
-*  build(core): Shell tools [View](./commits/1c8a3cca694250baa21d6260292d9fd37b000718)
 
