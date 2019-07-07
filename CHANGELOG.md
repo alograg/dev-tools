@@ -1,8 +1,13 @@
 # CHANGELOG
 
-[Version: v0.1.1]
+[Version: v0.1.2]
 
 ## Unreleased
+
+*  build(core): Change requirements [View](./commits/1ee33ba73177b3fbf428c14b5cc06e3b73662fa8)
+
+## v0.1.1 (2019-07-07)
+
 
 
 ## v0.1.0 (2019-07-07)
