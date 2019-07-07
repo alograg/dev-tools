@@ -3,6 +3,7 @@ namespace Alograg\DevTools\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;
+use Illuminate\Support\Str;
 
 class KeyGenerateCommand extends Command
 {
@@ -15,7 +16,7 @@ class KeyGenerateCommand extends Command
      */
     protected $signature = <<<TEXT
 key:generate
-    {--key=APP_KEY : Display the key instead of modifying files}
+    {--key=APP_KEY : Key to modify files}
     {--show : Display the key instead of modifying files}
     {--force : Force the operation to run when in production}
 TEXT;
@@ -61,7 +62,7 @@ TEXT;
      */
     protected function generateRandomKey()
     {
-        return 'base64:' . base64_encode(random_bytes(32));
+        return Str::random(32);
     }
 
     /**
@@ -92,11 +93,15 @@ TEXT;
     protected function writeNewEnvironmentFileWith($key)
     {
         $basePath = base_path('.env');
-        file_put_contents($basePath, preg_replace(
-            $this->keyReplacementPattern($key),
-            $this->key . '=' . $key,
-            file_get_contents($basePath)
-        ));
+        $keyReplacementPattern = $this->keyReplacementPattern();
+        $newKey = $this->key . '=' . $key;
+        $envContents = file_get_contents($basePath);
+        $pregReplace = preg_replace(
+            $keyReplacementPattern,
+            $newKey,
+            $envContents
+        );
+        file_put_contents($basePath, $pregReplace);
     }
 
     /**
@@ -104,11 +109,11 @@ TEXT;
      *
      * @return string
      */
-    protected function keyReplacementPattern($key = 'APP_KEY')
+    protected function keyReplacementPattern()
     {
-        $currentKey = env($key);
+        $currentKey = env($this->key);
         $escaped = preg_quote('=' . $currentKey, '/');
 
-        return "/^{$key}{$escaped}/m";
+        return "/^{$this->key}{$escaped}/m";
     }
 }
