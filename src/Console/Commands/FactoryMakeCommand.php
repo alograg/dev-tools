@@ -1,18 +1,10 @@
 <?php
-
 namespace Alograg\DevTools\Console\Commands;
 
+use Alograg\DevTools\Traits\MakerTrait;
 use Illuminate\Database\Console\Factories\FactoryMakeCommand as Command;
 
 class FactoryMakeCommand extends Command
 {
-    /**
-     * Get the stub file for the generator.
-     *
-     * @return string
-     */
-    protected function getStub()
-    {
-        return __DIR__.'/stubs/factory.stub';
-    }
+    use MakerTrait;
 }
