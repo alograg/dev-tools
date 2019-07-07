@@ -17,8 +17,7 @@ class KeyGenerateCommand extends Command
     protected $signature = <<<TEXT
 key:generate
     {--key=APP_KEY : Key to modify files}
-    {--show : Display the key instead of modifying files}
-    {--force : Force the operation to run when in production}
+    {--s|show : Display the key instead of modifying files}
 TEXT;
 
     /**

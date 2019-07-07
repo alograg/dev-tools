@@ -8,3 +8,27 @@ Based on:
 - [Atnic/lumen-generator](https://github.com/Atnic/lumen-generator)
 - [webNeat/lumen-generators](https://github.com/webNeat/lumen-generators)
 - [flipbox/lumen-generator](https://github.com/flipboxstudio/lumen-generator)
+
+## Instalation
+
+```SH
+composer require --desv alograg/dev-tools 
+```
+
+## Artisan Tools
+
+- [key:generate](#key:generate)
+
+### key:generate
+
+```
+Description:
+  Set the application key
+
+Usage:
+  key:generate [options]
+
+Options:
+      --key[=KEY]       Key to modify files [default: "APP_KEY"]
+  -s, --show            Display the key instead of modifying files
+```
