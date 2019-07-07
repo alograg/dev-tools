@@ -1,8 +1,15 @@
 # CHANGELOG
 
-[Version: v0.1.5]
+[Version: v0.1.6]
 
 ## Unreleased
+
+*  docs(core): Key generator usagei [View](./commits/ed99e4c166954fa079478a9a530120476849bc51)
+*  feat(core): Model maker with documentation [View](./commits/8488c5e64144bbb643199e6356e93c13437744f3)
+
+## v0.1.5 (2019-07-07)
+
+### Features:
 
 *  feat(core): Key generator tested [View](./commits/82773f387cdbff4fb803c262032782a7536e40b6)
 
