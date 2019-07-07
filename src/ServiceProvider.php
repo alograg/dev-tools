@@ -32,13 +32,14 @@ class ServiceProvider extends IlluminateServiceProvider
      * @var array
      */
     protected $devCommands = [
-        'ControllerMake' => 'command.controller.make',
-        'FactoryMake'    => 'command.factory.make',
-        'FilterMake'     => 'command.filter.make',
-        'MigrateMake'    => 'command.migrate.make',
-        'ModelMake'      => 'command.model.make',
-        'PolicyMake'     => 'command.policy.make',
-        'TestMake'       => 'command.test.make',
+        'ControllerMake'  => 'command.controller.make',
+        'FactoryMake'     => 'command.factory.make',
+        'FilterMake'      => 'command.filter.make',
+        'MigrateMake'     => 'command.migrate.make',
+        'ModelMake'       => 'command.model.make',
+        'PolicyMake'      => 'command.policy.make',
+        'TestMake'        => 'command.test.make',
+        'TranslationMake' => 'command.translation.make',
     ];
 
     /**
