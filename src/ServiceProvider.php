@@ -4,8 +4,6 @@ namespace Alograg\DevTools;
 use Alograg\DevTools\Console\Commands\ControllerMakeCommand;
 use Alograg\DevTools\Console\Commands\FactoryMakeCommand;
 use Alograg\DevTools\Console\Commands\FilterMakeCommand;
-use Alograg\DevTools\Console\Commands\MigrateMakeCommand;
-use Alograg\DevTools\Console\Commands\MigrationCreator;
 use Alograg\DevTools\Console\Commands\ModelMakeCommand;
 use Alograg\DevTools\Console\Commands\PolicyMakeCommand;
 use Alograg\DevTools\Console\Commands\TestMakeCommand;

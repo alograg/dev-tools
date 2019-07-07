@@ -2,10 +2,18 @@
 namespace Alograg\DevTools\Traits;
 
 use Illuminate\Support\Str;
-use Symfony\Component\Console\Input\InputOption;
 
+/**
+ * Trait MakerTrait
+ *
+ * @property array options
+ * @package Alograg\DevTools\Traits
+ */
 trait MakerTrait
 {
+    /**
+     * @var
+     */
     public static $basePath;
 
     /**
@@ -40,15 +48,6 @@ trait MakerTrait
         }
 
         return self::getStubsPath() . implode('.', array_filter([$name, $variation, 'stub']));
-        // if ($this->option('parent')) {
-        //     return self::getStubsPath() .'controller.nested.stub';
-        // } elseif ($this->option('model')) {
-        //     return self::getStubsPath() .'controller.model.stub';
-        // } elseif ($this->option('resource')) {
-        //     return self::getStubsPath() .'controller.stub';
-        // }
-        //
-        // return self::getStubsPath() .'controller.plain.stub';
     }
 
     /**
@@ -57,18 +56,6 @@ trait MakerTrait
     public static function getStubsPath(): string
     {
         return self::$basePath . '/stubs/';
-    }
-
-    /**
-     * Get the console command options.
-     *
-     * @return array
-     */
-    protected function getOptions()
-    {
-        return [
-            ['stub-path', 'sp', InputOption::VALUE_OPTIONAL, 'Path relative a stubs repo'],
-        ];
     }
 
 }

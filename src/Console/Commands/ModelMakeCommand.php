@@ -1,15 +1,14 @@
 <?php
-
 namespace Alograg\DevTools\Console\Commands;
 
+use Alograg\DevTools\Abstracts\Maker;
 use Illuminate\Support\Str;
-use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Model Make Command
  */
-class ModelMakeCommand extends GeneratorCommand
+class ModelMakeCommand extends Maker
 {
     /**
      * The console command name.
@@ -23,7 +22,9 @@ class ModelMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $description = 'Create a new Eloquent model class';
+    protected $description = <<<TEXT
+ Create a new Eloquent model class
+TEXT;
 
     /**
      * The type of class being generated.
@@ -41,30 +42,24 @@ class ModelMakeCommand extends GeneratorCommand
     public function handle()
     {
         $this->createFilter();
-
-        if (parent::handle() === false && ! $this->option('force')) {
+        if (parent::handle() === false && !$this->option('force')) {
             return false;
         }
-
         if ($this->option('all')) {
             $this->input->setOption('factory', true);
             $this->input->setOption('migration', true);
             $this->input->setOption('controller', true);
             $this->input->setOption('resource', true);
         }
-
         if ($this->option('factory')) {
             $this->createFactory();
         }
-
         if ($this->option('migration')) {
             $this->createMigration();
         }
-
         if ($this->option('controller') || $this->option('resource')) {
             $this->createController();
         }
-
         $this->generateTranslation();
 
         return true;
@@ -78,9 +73,9 @@ class ModelMakeCommand extends GeneratorCommand
     protected function createFilter()
     {
         $model = Str::studly(class_basename($this->argument('name')));
-
         $this->call('make:filter', [
-            'name' => $model.'Filter',
+            'name'        => $model . 'Filter',
+            '--stub-path' => $this->option('stub-path') ?: null,
         ]);
     }
 
@@ -92,10 +87,10 @@ class ModelMakeCommand extends GeneratorCommand
     protected function createFactory()
     {
         $factory = Str::studly(class_basename($this->argument('name')));
-
         $this->call('make:factory', [
-            'name' => "{$factory}Factory",
-            '--model' => $this->qualifyClass($this->getNameInput()),
+            'name'        => "{$factory}Factory",
+            '--model'     => $this->qualifyClass($this->getNameInput()),
+            '--stub-path' => $this->option('stub-path') ?: null,
         ]);
     }
 
@@ -109,9 +104,8 @@ class ModelMakeCommand extends GeneratorCommand
         $table = $this->option('pivot') ?
             Str::snake(class_basename($this->argument('name'))) :
             Str::plural(Str::snake(class_basename($this->argument('name'))));
-
         $this->call('make:migration', [
-            'name' => "create_{$table}_table",
+            'name'     => "create_{$table}_table",
             '--create' => $table,
         ]);
     }
@@ -124,106 +118,33 @@ class ModelMakeCommand extends GeneratorCommand
     protected function createController()
     {
         $controller = Str::studly(class_basename($this->argument('name')));
-
         $modelName = $this->qualifyClass($this->getNameInput());
-
         $this->call('make:controller', [
-            'name' => "{$controller}Controller",
-            '--model' => $this->option('resource') ? $modelName : null,
+            'name'        => "{$controller}Controller",
+            '--model'     => $this->option('resource') ? $modelName : null,
+            '--stub-path' => $this->option('stub-path') ?: null,
         ]);
     }
 
     /**
-     * Get the stub file for the generator.
-     *
-     * @return string
-     */
-    protected function getStub()
-    {
-        if ($this->option('pivot')) {
-            return __DIR__.'/stubs/pivot.model.stub';
-        }
-
-        return __DIR__.'/stubs/model.stub';
-    }
-
-    /**
-     * Get the stub file for the generator.
-     *
-     * @return string
-     */
-    protected function getTranslationStub()
-    {
-        return __DIR__.'/stubs/translation.stub';
-    }
-
-    /**
      * Generate Translation File
+     *
      * @return void
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
     protected function generateTranslation()
     {
-        $name = $this->qualifyClass($this->getNameInput());
-        $path = $this->getTranslationPath($name);
-
-        $this->makeDirectory($path);
-        $this->files->put($path, $this->buildTranslation($name));
-
-        $this->info('Translation also generated successfully.');
-        $this->warn($path);
-    }
-
-    /**
-     * Get the translation path.
-     *
-     * @param  string  $name
-     * @return string
-     */
-    protected function getTranslationPath($name)
-    {
-        $name = $this->getTranslationName($name);
-
-        return base_path().'/resources/lang/en/'.$name.'.php';
-    }
-
-    /**
-     * Get the translation name.
-     *
-     * @param  string  $name
-     * @return string
-     */
-    protected function getTranslationName($name)
-    {
-        $name = Str::replaceFirst($this->getDefaultNamespace(trim($this->rootNamespace(), '\\')).'\\', '', $name);
-        $name = Str::replaceLast('Models\\', '', $name);
-        $name = str_plural(snake_case($name));
-
-        return $name;
-    }
-
-
-    /**
-     * Build the translation with the given name.
-     *
-     * @param  string $name
-     * @return string
-     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
-     */
-    protected function buildTranslation($name)
-    {
-        $replace = [
-            'dummy_model_plural_variable' => str_plural(snake_case(class_basename($name), ' ')),
-            'dummy_model_variable' => snake_case(class_basename($name), ' '),
-        ];
-
-        return str_replace(array_keys($replace), array_values($replace), $this->files->get($this->getTranslationStub()));
+        $this->call('make:translation', [
+            'name'        => $this->getNameInput(),
+            '--stub-path' => $this->option('stub-path') ?: null,
+        ]);
     }
 
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param string $rootNamespace
+     *
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
@@ -238,20 +159,29 @@ class ModelMakeCommand extends GeneratorCommand
      */
     protected function getOptions()
     {
-        return [
-            ['all', 'a', InputOption::VALUE_NONE, 'Generate a migration, factory, and resource controller for the model'],
-
+        return array_merge(parent::getOptions(), [
+            [
+                'all',
+                'a',
+                InputOption::VALUE_NONE,
+                'Generate a migration, factory, and resource controller for the model',
+            ],
             ['controller', 'c', InputOption::VALUE_NONE, 'Create a new controller for the model'],
-
             ['factory', 'f', InputOption::VALUE_NONE, 'Create a new factory for the model'],
-
             ['force', null, InputOption::VALUE_NONE, 'Create the class even if the model already exists'],
-
             ['migration', 'm', InputOption::VALUE_NONE, 'Create a new migration file for the model'],
-
-            ['pivot', 'p', InputOption::VALUE_NONE, 'Indicates if the generated model should be a custom intermediate table model'],
-
-            ['resource', 'r', InputOption::VALUE_NONE, 'Indicates if the generated controller should be a resource controller'],
-        ];
+            [
+                'pivot',
+                'p',
+                InputOption::VALUE_NONE,
+                'Indicates if the generated model should be a custom intermediate table model',
+            ],
+            [
+                'resource',
+                'r',
+                InputOption::VALUE_NONE,
+                'Indicates if the generated controller should be a resource controller',
+            ],
+        ]);
     }
 }
