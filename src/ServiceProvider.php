@@ -25,6 +25,8 @@ class ServiceProvider extends IlluminateServiceProvider
     protected $devCommands = [
         'KeyGenerate' => 'command.key.generate',
         'ModelMake'   => 'command.make.model',
+        'MiddelwareMake'   => 'command.make.middleware',
+        'DisplayEnvConfig'   => 'command.show.env.config',
     ];
 
     /**

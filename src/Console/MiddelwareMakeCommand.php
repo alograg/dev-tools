@@ -1,39 +1,33 @@
 <?php
 namespace Alograg\DevTools\Console;
 
-use Illuminate\Support\Str;
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
 
-/**
- * Class ModelMakeCommand
- *
- * @package Alograg\DevTools\Console
- */
-class ModelMakeCommand extends GeneratorCommand
+class MiddelwareMakeCommand extends GeneratorCommand
 {
     /**
      *
      */
-    const STUBS_MODEL_STUB = '/../stubs/model.stub';
+    const STUBS_MODEL_STUB = '/../stubs/middleware.stub';
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'make:model';
+    protected $name = 'make:middleware';
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new Eloquent model class';
+    protected $description = 'Create a new middleware class';
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $type = 'Model';
+    protected $type = 'Middleware';
 
     /**
      * Execute the console command.
@@ -41,10 +35,6 @@ class ModelMakeCommand extends GeneratorCommand
     public function handle()
     {
         if (parent::handle() !== false) {
-             if ($this->option('migration')) {
-                 $table = Str::plural(Str::snake(class_basename($this->argument('name'))));
-                 $this->call('make:migration', ['name' => "create_{$table}_table", '--create' => $table]);
-             }
         }
     }
 
@@ -57,13 +47,13 @@ class ModelMakeCommand extends GeneratorCommand
     {
         $template = $this->option('template');
 
-        return $template ? base_path($template) : realpath(__DIR__.self::STUBS_MODEL_STUB);
+        return $template ? base_path($template) : realpath(__DIR__ . self::STUBS_MODEL_STUB);
     }
 
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param string $rootNamespace
      *
      * @return string
      */
@@ -79,21 +69,16 @@ class ModelMakeCommand extends GeneratorCommand
      */
     protected function getOptions()
     {
-        $defaultPath = str_replace(base_path(), '', realpath(__DIR__.self::STUBS_MODEL_STUB));
+        $defaultPath = str_replace(base_path(), '', realpath(__DIR__ . self::STUBS_MODEL_STUB));
 
         return [
             [
                 'template',
                 't',
                 InputOption::VALUE_OPTIONAL,
-                'Relative path to stub file. DEFAULT: '.$defaultPath,
+                'Relative path to stub file. DEFAULT: ' . $defaultPath,
             ],
-            [
-                'migration',
-                'm',
-                InputOption::VALUE_NONE,
-                'Create a new migration file for the model.'
-            ],
+            // ['migration', 'm', InputOption::VALUE_NONE, 'Create a new migration file for the model.'],
         ];
     }
 
