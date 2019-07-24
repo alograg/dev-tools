@@ -76,7 +76,8 @@ class MiddelwareMakeCommand extends GeneratorCommand
                 'template',
                 't',
                 InputOption::VALUE_OPTIONAL,
-                'Relative path to stub file. DEFAULT: ' . $defaultPath,
+                'Relative path to stub file.',
+                $defaultPath,
             ],
             // ['migration', 'm', InputOption::VALUE_NONE, 'Create a new migration file for the model.'],
         ];

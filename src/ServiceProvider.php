@@ -26,6 +26,7 @@ class ServiceProvider extends IlluminateServiceProvider
         'KeyGenerate' => 'command.key.generate',
         'ModelMake'   => 'command.make.model',
         'MiddelwareMake'   => 'command.make.middleware',
+        'ControllerMake'   => 'command.make.controller',
         'DisplayEnvConfig'   => 'command.show.env.config',
     ];
 

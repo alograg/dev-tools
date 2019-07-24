@@ -1,0 +1,12 @@
+<?php
+namespace DummyNamespace;
+
+use Alograg\Abstracts\RESTControllerAbstract;
+use Alograg\Traits\RESTActions;
+
+class DummyClass extends RESTControllerAbstract
+{
+    use RESTActions;
+
+    const MODEL = 'DummyClass';
+}

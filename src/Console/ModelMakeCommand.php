@@ -56,8 +56,9 @@ class ModelMakeCommand extends GeneratorCommand
     protected function getStub()
     {
         $template = $this->option('template');
+        $vendorsPath = realpath(__DIR__.self::STUBS_MODEL_STUB);
 
-        return $template ? base_path($template) : realpath(__DIR__.self::STUBS_MODEL_STUB);
+        return $template != $vendorsPath ? base_path($template) : $vendorsPath;
     }
 
     /**
@@ -86,7 +87,8 @@ class ModelMakeCommand extends GeneratorCommand
                 'template',
                 't',
                 InputOption::VALUE_OPTIONAL,
-                'Relative path to stub file. DEFAULT: '.$defaultPath,
+                'Relative path to stub file.',
+                $defaultPath,
             ],
             [
                 'migration',
