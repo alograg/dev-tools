@@ -1,0 +1,39 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+max_line_length = 120
+tab_width = 2
+trim_trailing_whitespace = true
+
+[{*.less,*.sass,*.scss}]
+indent_size = 2
+
+[*.vue]
+indent_size = 2
+tab_width = 2
+
+[*.php]
+indent_size = 4
+tab_width = 4
+
+[{*.bash,*.sh,*.zsh,artisanDock,composerdock,dbDock,installInDock,npmDock,restartDock  Dock}]
+indent_size = 2
+tab_width = 2
+
+[{*.cjs,*.js}]
+indent_size = 2
+tab_width = 2
+
+[{*.har,*.jsb2,*.jsb3,*.json,.babelrc,.eslintrc,.stylelintrc,bowerrc,composer.lock,jest.config}]
+indent_size = 2
+
+[{*.ps,*.ps1,*.psd1,*.psm1}]
+max_line_length = 115
+
+[{*.yaml,*.yml}]
+indent_size = 2

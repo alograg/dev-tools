@@ -36,6 +36,7 @@ class MiddelwareMakeCommand extends GeneratorCommand
     {
         if (parent::handle() !== false) {
         }
+        return null;
     }
 
     /**
@@ -82,5 +83,4 @@ class MiddelwareMakeCommand extends GeneratorCommand
             // ['migration', 'm', InputOption::VALUE_NONE, 'Create a new migration file for the model.'],
         ];
     }
-
 }

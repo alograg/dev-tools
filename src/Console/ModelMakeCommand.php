@@ -41,11 +41,12 @@ class ModelMakeCommand extends GeneratorCommand
     public function handle()
     {
         if (parent::handle() !== false) {
-             if ($this->option('migration')) {
-                 $table = Str::plural(Str::snake(class_basename($this->argument('name'))));
-                 $this->call('make:migration', ['name' => "create_{$table}_table", '--create' => $table]);
-             }
+            if ($this->option('migration')) {
+                $table = Str::plural(Str::snake(class_basename($this->argument('name'))));
+                $this->call('make:migration', ['name' => "create_{$table}_table", '--create' => $table]);
+            }
         }
+        return null;
     }
 
     /**
@@ -64,7 +65,7 @@ class ModelMakeCommand extends GeneratorCommand
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param string $rootNamespace
      *
      * @return string
      */
@@ -98,5 +99,4 @@ class ModelMakeCommand extends GeneratorCommand
             ],
         ];
     }
-
 }

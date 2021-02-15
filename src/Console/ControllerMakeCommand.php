@@ -1,4 +1,5 @@
 <?php
+
 namespace Alograg\DevTools\Console;
 
 use Illuminate\Console\GeneratorCommand;
@@ -17,21 +18,29 @@ class ControllerMakeCommand extends GeneratorCommand
      */
     const STUBS_CONTROLLER_STUB = '/../stubs/controller.stub';
 
-    /** {@inheritdoc} */
+    /**
+     * {@inheritdoc}
+     */
     protected $name = 'make:controller';
 
-    /** {@inheritdoc} */
+    /**
+     * {@inheritdoc}
+     */
     protected $description = 'Create a new REST controller class';
 
-    /** {@inheritdoc} */
+    /**
+     * {@inheritdoc}
+     */
     protected $type = 'Controller';
 
     /**
-     * @var null
+     * @var null|string
      */
     protected $routerPath = null;
 
-    /** {@inheritdoc} */
+    /**
+     * {@inheritdoc}
+     */
     public function handle()
     {
         if (parent::handle() !== false) {
@@ -44,6 +53,7 @@ class ControllerMakeCommand extends GeneratorCommand
             }
             $this->appendRouteFile();
         }
+        return null;
     }
 
     /**
@@ -55,14 +65,13 @@ class ControllerMakeCommand extends GeneratorCommand
     {
         $template = $this->option('template');
         $vendorsPath = realpath(__DIR__.self::STUBS_CONTROLLER_STUB);
-
         return $template != $vendorsPath ? base_path($template) : $vendorsPath;
     }
 
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param string $rootNamespace
      *
      * @return string
      */
@@ -79,8 +88,16 @@ class ControllerMakeCommand extends GeneratorCommand
     protected function appendRouteFile()
     {
         $name = $this->qualifyClass($this->getNameInput());
-        $nameWithoutNamespace = str_replace($this->getDefaultNamespace(trim($this->rootNamespace(),
-                '\\')).'\\', '', $name);
+        $nameWithoutNamespace = str_replace(
+            $this->getDefaultNamespace(
+                trim(
+                    $this->rootNamespace(),
+                    '\\'
+                )
+            ).'\\',
+            '',
+            $name
+        );
         $nameWithoutNamespace = Str::replaceFirst('Http\\Controllers\\', '', $nameWithoutNamespace);
         $file = base_path($this->routerPath);
         $as = $this->getRouteName($name);
@@ -94,37 +111,47 @@ class ControllerMakeCommand extends GeneratorCommand
             "\$router->patch('{$routePath}/{id}', [ 'as' => '$as.update', 'uses' => '$nameWithoutNamespace@put' ]);",
             "\$router->delete('{$routePath}/{id}', [ 'as' => '$as.destroy', 'uses' => '$nameWithoutNamespace@remove' ]);"
         ];
-        file_put_contents($file, implode(PHP_EOL, $routeDefinition).PHP_EOL,
-            FILE_APPEND);
+        file_put_contents(
+            $file,
+            implode(PHP_EOL, $routeDefinition).PHP_EOL,
+            FILE_APPEND
+        );
         $this->warn($file.' modified.');
     }
 
     /**
      * Get the route name.
      *
-     * @param  string  $name
+     * @param string $name
      *
      * @return string
      */
     protected function getRouteName($name)
     {
         $name = Str::replaceFirst('Http\\Controllers\\', '', $name);
-        $name = Str::replaceFirst($this->getDefaultNamespace(trim($this->rootNamespace(),
-                '\\')).'\\', '', $name);
+        $name = Str::replaceFirst(
+            $this->getDefaultNamespace(
+                trim(
+                    $this->rootNamespace(),
+                    '\\'
+                )
+            ).'\\',
+            '',
+            $name
+        );
         $name = Str::replaceLast('Controller', '', $name);
         $names = explode('\\', $name);
         foreach ($names as $key => $value) {
-            $names[$key] = snake_case($value);
+            $names[$key] = Str::snake($value);
         }
         $name = implode('.', $names);
-
         return str_replace('\\', '.', $name);
     }
 
     /**
      * Get the route path.
      *
-     * @param  string  $name
+     * @param string $name
      *
      * @return string
      */
@@ -133,7 +160,6 @@ class ControllerMakeCommand extends GeneratorCommand
         $routeName = $this->getRouteName($name);
         $routeNameExploded = explode('.', $routeName);
         $routePath = str_replace('.', '/', $this->getRouteName($routeName));
-
         return $routePath;
     }
 
@@ -144,9 +170,11 @@ class ControllerMakeCommand extends GeneratorCommand
      */
     protected function getOptions()
     {
-        $defaultPath = str_replace(base_path(), '',
-            realpath(__DIR__.self::STUBS_CONTROLLER_STUB));
-
+        $defaultPath = str_replace(
+            base_path(),
+            '',
+            realpath(__DIR__.self::STUBS_CONTROLLER_STUB)
+        );
         return [
             [
                 'template',
@@ -164,5 +192,4 @@ class ControllerMakeCommand extends GeneratorCommand
             ],
         ];
     }
-
 }

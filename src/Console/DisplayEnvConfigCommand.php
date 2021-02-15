@@ -39,5 +39,4 @@ TEXT;
     {
         print json_encode(config()->all(), JSON_PRETTY_PRINT);
     }
-
 }

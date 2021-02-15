@@ -1,4 +1,5 @@
 <?php
+
 namespace Alograg\DevTools;
 
 use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
@@ -6,7 +7,7 @@ use Illuminate\Support\ServiceProvider as IlluminateServiceProvider;
 /**
  * Class ServiceProvider
  *
- * @see ControllerMakeCommand, FactoryMakeCommand, FilterMakeCommand, MigrateMakeCommand, MigrationCreator, ModelMakeCommand, PolicyMakeCommand, TestMakeCommand
+ * @see     ControllerMakeCommand, FactoryMakeCommand, FilterMakeCommand, MigrateMakeCommand, MigrationCreator, ModelMakeCommand, PolicyMakeCommand, TestMakeCommand
  * @package Alograg\DevTools
  */
 class ServiceProvider extends IlluminateServiceProvider
@@ -24,10 +25,11 @@ class ServiceProvider extends IlluminateServiceProvider
      */
     protected $devCommands = [
         'KeyGenerate' => 'command.key.generate',
-        'ModelMake'   => 'command.make.model',
-        'MiddelwareMake'   => 'command.make.middleware',
-        'ControllerMake'   => 'command.make.controller',
-        'DisplayEnvConfig'   => 'command.show.env.config',
+        'ModelMake' => 'command.make.model',
+        'MiddelwareMake' => 'command.make.middleware',
+        'ControllerMake' => 'command.make.controller',
+        'DisplayEnvConfig' => 'command.show.env.config',
+        'Routes' => 'command.route.list',
     ];
 
     /**
@@ -43,14 +45,25 @@ class ServiceProvider extends IlluminateServiceProvider
             $components = parse_url($uri);
             $server = $_SERVER;
             if (isset($components['path'])) {
-                $server = array_merge($server, [
+                $server = array_merge(
+                    $server,
+                    [
                     'SCRIPT_FILENAME' => $components['path'],
-                    'SCRIPT_NAME'     => $components['path'],
-                ]);
+                    'SCRIPT_NAME' => $components['path'],
+                    ]
+                );
             }
-            $this->app->instance('request', $this->app->make('request')->create(
-                $uri, 'GET', [], [], [], $server
-            ));
+            $this->app->instance(
+                'request',
+                $this->app->make('request')->create(
+                    $uri,
+                    'GET',
+                    [],
+                    [],
+                    [],
+                    $server
+                )
+            );
         }
         $this->registerCommands($this->devCommands);
     }
@@ -69,14 +82,16 @@ class ServiceProvider extends IlluminateServiceProvider
                 call_user_func_array([$this, "register{$command}Command"], []);
                 continue;
             }
-            $className = 'Alograg\\DevTools\\Console\\' . $command . 'Command';
+            $className = 'Alograg\\DevTools\\Console\\'.$command.'Command';
             if (class_exists($className)) {
-                $this->app->singleton($container, function ($app) use ($className) {
-                    return new $className($app['files']);
-                });
+                $this->app->singleton(
+                    $container,
+                    function ($app) use ($className) {
+                        return new $className($app['files']);
+                    }
+                );
             }
         }
         $this->commands(array_values($commands));
     }
-
 }

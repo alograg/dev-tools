@@ -41,7 +41,8 @@ TEXT;
     {
         $this->key = $this->option('key');
         if ($this->option('show')) {
-            return $this->line('<comment>' . env($this->key) . '</comment>');
+            $this->line('<comment>' . env($this->key) . '</comment>');
+            return;
         }
         $key = $this->generateRandomKey();
         // Next, we will replace the application key in the environment file so it is
