@@ -1,8 +1,14 @@
 # CHANGELOG
 
-[Version: v0.1.7]
+[Version: v0.2.0]
 
 ## Unreleased
+
+*  refactor(core): Dependencies opening [View](./commits/687231dba74db2b9edf695a0c06bd2bf95ed1a2b)
+
+## v0.1.7 (2019-07-25)
+
+### Features:
 
 *  feat(readme): Display env config, Middelware Maker and Model with migrates [View](./commits/0c0529af9622209082546abb40f302f9f9d06d01)
 *  feat(core): Controller maker and middleware [View](./commits/250bdf85ef967576a5f958bfc566c7637f62c685)
@@ -84,14 +90,4 @@
 ### Features:
 
 *  feat(core): Changer loger base [View](./commits/23072c95863ec5e2187f484ac18a203772765157)
-
-## v0.0.1 (2019-07-04)
-
-### Build system or external dependencies:
-
-*  build(core): Base [View](./commits/c4bb326fbcbb3b40bd325d82b25532b30353d712)
-*  build(core): Git ignore [View](./commits/78d807df26816a25a242502a0e7cafeaeb55682d)
-*  build(core): Git ignore [View](./commits/09d57c300129b3961a59feb5342782b8cae0b206)
-*  build(core): Composer update [View](./commits/88b490608f19af7990de2d15d082479e08f93f77)
-*  build(core): Shell tools [View](./commits/1c8a3cca694250baa21d6260292d9fd37b000718)
 
